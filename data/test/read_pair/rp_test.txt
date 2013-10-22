@@ -1,0 +1,2 @@
+data/test/read_pair/rp_1.fastq
+data/test/read_pair/rp_2.fastq
