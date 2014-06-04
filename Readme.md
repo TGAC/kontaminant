@@ -36,6 +36,7 @@ too much rehashing!! Rehash=26
 try increasing the --height
 
 Flags:
+
 	 --mem_width = Size of hash table buckets (default 100).
 	 --help = This help message
 	 --input = File of reads in fastq or fasta format. If not privided, STDIN is used
