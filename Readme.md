@@ -26,14 +26,19 @@ Building the hash
 -----------------
 To build the database of kmers from a fasta file:
 
+```
  ./bin/kmer_hash_build_31 --input contaminant_reference.fasta --output contamiant_K21.kmers --format FASTA 
+```
 
-Notes:
+*Notes*:
+
 If you get the error:
 ```
 too much rehashing!! Rehash=26
 ```
-try increasing the --height
+try increasing the --mem_height
+
+The output file contains the kmers in the contaminant and it is the database to be used in the rest of the programs. 
 
 Flags:
 
@@ -42,7 +47,7 @@ Flags:
 	 --input = File of reads in fastq or fasta format. If not privided, STDIN is used
 	 --file_format [FASTQ | FASTA] = Format of the reads. fasta or fastq. Default fastq 
 	 --kmer_size = Size of the kmer in the reference file
-	 --mem_heigh = Number of buckets in hash table in bits (default 10, this is a power of 2, ie 2^mem_height).
+	 --mem_height = Number of buckets in hash table in bits (default 10, this is a power of 2, ie 2^mem_height).
 	 --output = A kmers file in binary format. To be used with the kmer_stats and kmer_contamination programs.
 	 --quality_score_offset = Offset for the fastq file. Default 33.
 	 --quality_score_threshold = Minimum quality across a kmer to be used
