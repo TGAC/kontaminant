@@ -50,9 +50,9 @@ typedef struct
 static  const char * usage = 
 "\nusage: kmer_hash_build [-h] [--input file_of_sequences][--mem_height 16][--output kmers_file] \n" \
 "\t --mem_width = Size of hash table buckets (default 100).\n" \
-"\t --help = This help message"\
+"\t --help = This help message\n"\
 "\t --input = File of reads in fastq or fasta format. If not privided, STDIN is used\n"\
-"\t --file_format = Format of the reads. fasta or fastq. Default fastq\n"\
+"\t --format [FASTQ | FASTA] = Format of the reads. fasta or fastq. Default fastq \n"\
 "\t --kmer_size = Size of the kmer in the reference file\n"\
 "\t --mem_heigh = Number of buckets in hash table in bits (default 10, this is a power of 2, ie 2^mem_height).\n"
 "\t --output = A kmers file in binary format. To be used with the kmer_stats and kmer_contamination programs.\n"\

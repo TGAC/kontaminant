@@ -58,8 +58,8 @@ typedef enum{
 #define DEBUG  0
 #endif
 
-#define SVN_VERSION "Revision: 891\n"
-#define SVN_COMMIT_DATE "Last source update on Aug 17 2012 at 18:00:26\n"
+#define SVN_VERSION "1c5dce6d16755f856fb9fece6985493379c21ac9\n"
+#define SVN_COMMIT_DATE "Last source update on: Wed Jun 4 09:54:09 2014 +0100 \n"
 
 
 
