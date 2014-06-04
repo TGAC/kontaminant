@@ -117,10 +117,10 @@ typedef struct {
 // basic BinaryKmer operations
 void binary_kmer_initialise_to_zero(BinaryKmer* bkmer);
 void binary_kmer_assignment_operator(BinaryKmer left, BinaryKmer right);
-boolean binary_kmer_comparison_operator(const BinaryKmer const left,
-		const BinaryKmer const right);
-boolean binary_kmer_less_than(const BinaryKmer const left,
-		const BinaryKmer const right, short kmer_size);
+boolean binary_kmer_comparison_operator(const BinaryKmer  left,
+		const BinaryKmer  right);
+boolean binary_kmer_less_than(const BinaryKmer  left,
+		const BinaryKmer  right, short kmer_size);
 void binary_kmer_right_shift(BinaryKmer* kmer, int num_bits_to_shift);
 void binary_kmer_left_shift(BinaryKmer* kmer, int num_bits_to_shift,
 		short kmer_size);

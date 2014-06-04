@@ -58,7 +58,7 @@ void binary_kmer_assignment_operator(BinaryKmer left, BinaryKmer right)
 }
 
 //returns true if they are the same
-boolean binary_kmer_comparison_operator(const BinaryKmer const left, const BinaryKmer const right)
+boolean binary_kmer_comparison_operator(const BinaryKmer left, const BinaryKmer  right)
 {
 	
 	boolean they_are_the_same = true;
@@ -75,7 +75,7 @@ boolean binary_kmer_comparison_operator(const BinaryKmer const left, const Binar
 }
 
 //TODO: - this wrongly says left<right when they are the same! IS really a <= operator
-boolean binary_kmer_less_than(const BinaryKmer const left, const BinaryKmer const right, short kmer_size)
+boolean binary_kmer_less_than(const BinaryKmer  left, const BinaryKmer  right, short kmer_size)
 {
 	boolean left_is_less_than_right = false;
 	
