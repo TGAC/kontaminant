@@ -30,6 +30,9 @@
 
 
 
+
+#include <assert.h>
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdint.h>
@@ -68,6 +71,7 @@ typedef struct
 
 static void kmer_stats_default_opts(KmerStatsCmdLine * c)
 {
+    //printf("(initiationg struct for args)\n" );
     c->input_filename = calloc(LENGTH_FILENAME+1, sizeof(char *));
     c->output_filename = NULL;
     c->reference_kmers = NULL;
@@ -77,15 +81,16 @@ static void kmer_stats_default_opts(KmerStatsCmdLine * c)
     c->bucket_size = 100;
     c->quality_score_offset = 33;
     c->input_filename[0]='-';
-    c->format = FASTQ;
+    c->format = KMERS;
     c->quality_score_threshold = 0;
+   // printf("(done struct for args)\n" );
 }
 const char *usage =
 "\nusage: kmer_contamination [-h] [--input file_of_sequences] [--reference kmers_file][--mem_height 16][--output stats_file] \n" \
 "\t --mem_width = Size of hash table buckets (default 100).\n" \
 "\t --help = This help message"\
 "\t --input = File of reads in fastq format.\n"\
-"\t --file_format = Format of the read. fasta or fastq. Default fastq\n"\
+"\t --file_format [KMERS] = Format of the read. fasta or fastq. Default KMERS\n"\
 "\t --kmer_size = Size of the kmer in the reference file\n"\
 "\t --mem_heigh = Number of buckets in hash table in bits (default 10, this is a power of 2, ie 2^mem_height).\n"
 "\t --output = A tab separated file with the results of the analysis. The header is printed if the file doesn't exist. If it exists, the new stats are appeneded. We don't validate that previous entries are valid.\n"\
@@ -111,23 +116,32 @@ static KmerStatsCmdLine parse_cmdline(int argc, char *argv[], int unit_size)
 
     KmerStatsCmdLine cmd_line;
     kmer_stats_default_opts(&cmd_line);
+
     int opt;
     int longopt_index;
-     char * tmp_format;
-     static struct option long_options[] = {
-         {"mem_width", required_argument, NULL, 'b'},
-         {"file_format", required_argument, NULL, 'f'},
-         {"help", no_argument, NULL, 'h'},
-         {"input", required_argument, NULL, 'i'},
-         {"kmer_size", required_argument, NULL, 'k'},
-         {"mem_height", required_argument, NULL, 'n'},
-         {"output", required_argument, NULL, 'o'},
-         {"quality_score_offset", required_argument, NULL, 'p'},
-         {"quality_score_threshold", required_argument, NULL, 'q'},
-         {"reference_kmers", required_argument, NULL, 'r'},
-         {"histogram_output", required_argument, NULL, 't'}
-     };
+    char * tmp_format;
+    //printf("About to create static struct\n");
+    static struct option long_options[] = {
+        {"mem_width", required_argument, NULL, 'b'},
+        {"format", required_argument, NULL, 'f'},
+        {"help", no_argument, NULL, 'h'},
+        {"input", required_argument, NULL, 'i'},
+        {"kmer_size", required_argument, NULL, 'k'},
+        {"mem_height", required_argument, NULL, 'n'},
+        {"output", required_argument, NULL, 'o'}, 
+        {"quality_score_offset", required_argument, NULL, 'p'},
+        {"quality_score_threshold", required_argument, NULL, 'q'},
+        {"reference_kmers", required_argument, NULL, 'r'},
+        {"histogram_output", required_argument, NULL, 't'},
+       
+    };
+
+     //,
+    //     {"reference_kmers", required_argument, NULL, 'r'},
+     //    {"histogram_output", required_argument, NULL, 't'}
+   //  printf("ABOUT TO ITERATE PARSER");
      while ((opt = getopt_long(argc, argv,"b:f:hi:k:n:o:p:q:r:t:", long_options, &longopt_index)) > 0){
+       
          switch (opt) {
              case 'b':
                  if (optarg == NULL)
@@ -363,8 +377,9 @@ int main(int argc, char **argv)
     
     KmerStatsCmdLine cmd_line = parse_cmdline(argc, argv, sizeof(Element));
     
-    
+    //log_and_screen_printf("Parsed options\n");
     KmerHash * kmer_hash = load_kmer_table(cmd_line);
+    log_and_screen_printf("Kmers readed\n");
     load_reads_coverage_table(cmd_line, kmer_hash);
     print_kmer_stats(&cmd_line, kmer_hash);
     print_contaminated_kmers_histogram(&cmd_line, kmer_hash);

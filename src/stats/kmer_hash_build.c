@@ -6,7 +6,6 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#include <stdio.h>
 
 #include <stdio.h>
 #include <assert.h>

@@ -229,7 +229,7 @@ long long load_seq_into_kmers_hash(KmerFileReaderArgs * fra){
         }else{
             hash_table_add_number_of_reads(1, colour, kmer_hash);
 
-            
+            printf("kmers loadad: %i", kmers_loaded);
             kmer_hash->contaminated_kmers_per_read[kmers_loaded < MAX_READ_LENGTH? kmers_loaded:MAX_READ_LENGTH]++; //We allow up to the maximum read lenght. the last element is the cumulative of the reads/contigs that have more than the space we have allocated
             if(kmers_loaded > 0){
                 contaminated_reads++;

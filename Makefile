@@ -72,7 +72,8 @@ endif
 
 # Mac OS X specific. Assuming CUnit is installed with MacPorts
 ifdef MAC
-MACFLAG = -fnested-functions -L/opt/local/lib/ 
+#¢-fnested-functions 
+MACFLAG = -L/opt/local/lib/ 
 IDIR_CUNIT=/opt/local/include/CUnit/ 
 CFLAGS_CUNIT = -L/opt/local/lib/ -lncurses
 #LD_CUNIT=
@@ -88,7 +89,7 @@ endif
 OPT		= $(ARCH) -Wall -O3 $(MACFLAG) -DNUMBER_OF_BITFIELDS_IN_BINARY_KMER=$(BITFIELDS) -pthread -g
 
 ifdef DEBUG
-OPT	= $(ARCH) -Wall -O0 $(MACFLAG) -DNUMBER_OF_BITFIELDS_IN_BINARY_KMER=$(BITFIELDS) -g -pthread
+OPT	= $(ARCH) -Wall -O0 $(MACFLAG) -DNUMBER_OF_BITFIELDS_IN_BINARY_KMER=$(BITFIELDS) -g3 -pthread
 endif
 
 ifdef ENABLE_READ_PAIR
