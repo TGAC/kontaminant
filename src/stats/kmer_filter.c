@@ -107,7 +107,7 @@ const char *usage =
 "\t --output_prefix = The prefix for the files with bins.\n"\
 "\t --quality_score_offset = Offset for the fastq file. Default 33.\n"\
 "\t --quality_score_threshold = Minimum quality across a kmer to be used\n"\
-"\t --reference_kmers = File containing the kmers to compare. This are built with kmer_hash_build\n"\
+"\t --reference = File containing the kmers to compare. This are built with kmer_hash_build\n"\
 "\t --print_contaminated = Print contaminated reads in a new fastq file\n"\
 "\t --threashold = Number of kmers to be considered as a above or below the cutoff" \
 "\t --output_folder = Folder to write the filtered reads. "
@@ -145,7 +145,7 @@ static KmerFilterCmdLine parse_cmdline(int argc, char *argv[], int unit_size)
         {"output_prefix", required_argument, NULL, 'o'},
         {"quality_score_offset", required_argument, NULL, 'p'},
         {"quality_score_threshold", required_argument, NULL, 'q'},
-        {"reference_kmers", required_argument, NULL, 'r'},
+        {"reference", required_argument, NULL, 'r'},
         {"stats_file", required_argument, NULL, 's'},
         {"threashold", required_argument, NULL, 't'},
         {"output_folder", required_argument, NULL, 'O'},
